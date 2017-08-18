@@ -49,6 +49,8 @@ int main()
 
 	Framebuffer f = { 0, 800, 600 };
 
+	 
+
 	while (context.step())
 	{
 		s0_draw(f, s, g);
