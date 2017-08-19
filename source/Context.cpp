@@ -4,7 +4,7 @@
 #include "glinc.h"
 
 
-#ifdef DEBUG
+#ifdef _DEBUG
 #include <iostream>
 
 void APIENTRY GL_errorCallback(GLenum, GLenum type, GLuint id, GLenum severity,
@@ -24,13 +24,14 @@ void APIENTRY GL_errorCallback(GLenum, GLenum type, GLuint id, GLenum severity,
 
 		glewExperimental = true;
 		glewInit();
-		#ifdef  _ DEBUG
+		#ifdef  _DEBUG
 			glEnable(GL_DEBUG_OUTPUT);
 			glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 
-			glDebugMessageCallback(glDebugMessageCallback, 0);
-			glDebugMessageControl(GL_DONT_CARE; GL_DONT_CARE, GL_DONT_CARE, 0, 0, true);
+			glDebugMessageCallback(GL_errorCallback, 0);
+			glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, 0, true);
 		#endif //  _ DEBUG
+
 		return true;
 	}
 
@@ -54,8 +55,8 @@ void APIENTRY GL_errorCallback(GLenum, GLenum type, GLuint id, GLenum severity,
 
 	bool Context::getKey(int Key)
 	{
-		glfwGetKey(handle,Key);
-		return false;
+		return glfwGetKey(handle,Key);
+		//return false;
 	}
 
 	bool Context::getMouseButton(int button)

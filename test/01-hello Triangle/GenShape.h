@@ -3,5 +3,5 @@ struct Geometry;
 
 Geometry makeNGon(float x, float y, float r);
 
-Geometry makeCheckerboard(int r, int c, float w, float h);
+Geometry makeCheckerboard(int dim, float size);
 

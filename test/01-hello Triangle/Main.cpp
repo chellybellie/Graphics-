@@ -3,6 +3,7 @@
 #include "graphics\RenderObjects.h"
 #include "graphics\Vertex.h"
 #include "graphics\DrawFunction.h"
+#include "GenShape.h"
 
 
 int main()
@@ -20,7 +21,7 @@ int main()
 	unsigned idxs[6] = { 0,1,2,3,2,0 };
 
 	Geometry g = makeGeometry(verts, 4, idxs, 6);
-
+	Geometry gt = makeCheckerboard(4, 1);
 	const char* vsource =
 		"#version 450\n"
 		"layout(location = 0) in vec4 position; \n"
@@ -53,10 +54,11 @@ int main()
 
 	while (context.step())
 	{
-		s0_draw(f, s, g);
+		s0_draw(f, s, gt);
 	}
 	freeGeometry(g);
 	freeShader(s);
 	context.term();
+	
 	return 0;
 }
