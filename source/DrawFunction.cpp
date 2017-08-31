@@ -3,6 +3,13 @@
 #include "graphics\RenderObjects.h"
 #include "graphics\DrawFunction.h"
 
+void setFlag(int flags)
+{
+	// depth testing 
+	if (flags & RenderFlag::Depth) glEnable(GL_DEPTH_TEST);
+	else glDisable(GL_DEPTH_TEST);
+}
+
 void s0_draw(const Framebuffer &f, shader &s, Geometry &g)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, f.handle);
@@ -12,6 +19,13 @@ void s0_draw(const Framebuffer &f, shader &s, Geometry &g)
 	glViewport(0, 0, f.width, f.height);
 
 	glDrawElements(GL_TRIANGLES, g.size, GL_UNSIGNED_INT, 0);
+}
+
+void clearFramebuffer(const Framebuffer & f, bool color, bool depth)
+{
+	glBindFramebuffer(GL_FRAMEBUFFER, f.handle);
+	glClear(GL_COLOR_BUFFER_BIT * color | GL_DEPTH_BUFFER_BIT * depth);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 

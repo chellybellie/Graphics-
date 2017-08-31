@@ -5,9 +5,13 @@ struct Framebuffer;
 struct shader;
 struct Geometry;
 
+enum RenderFlag { Depth = 1};
+
+void setFlag(int flags);
+
 void s0_draw(const Framebuffer &f, shader &s, Geometry &g);
 
-void clearFramebuffer(const Framebuffer &f);
+void clearFramebuffer(const Framebuffer &f, bool color = true, bool depth = true);
 
 void setUniform(const shader &s, int location, float value);
 
