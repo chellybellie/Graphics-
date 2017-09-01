@@ -29,5 +29,17 @@
     <None Include="..\..\test\05 - MVP\MVPlite.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Standered.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Standered.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Quad.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="quad.vert">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

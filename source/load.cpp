@@ -1,6 +1,6 @@
 #include "graphics\Load.h"
 #include "graphics\RenderObjects.h"
-#define TINYOBJLOADER_IMPLEMENTATION
+#define TINYOBJLOADER_IMPLEMENTATION 
 #include "obj\tiny_obj_loader.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb\stb_image.h"

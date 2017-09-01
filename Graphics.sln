@@ -10,7 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01-hello Triangle", "test\0
 		{9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6} = {9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UniTex", "test\UniTex\UniTex.vcxproj", "{3F1A4CC5-665B-4765-8E1D-EF8301A5BCC8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 - UniTex", "test\UniTex\UniTex.vcxproj", "{3F1A4CC5-665B-4765-8E1D-EF8301A5BCC8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6} = {9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6}
 	EndProjectSection
@@ -28,6 +28,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shaders", "resources\shader
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05 - MVP", "test\05 - MVP\05 - MVP.vcxproj", "{7FCA8D42-8447-4E3F-B450-DEED052454CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6} = {9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - Materials", "test\07 - Materials\07 - Materials.vcxproj", "{382CBF83-28E7-4E33-8781-BB4434082167}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6} = {9DC2B29F-8364-4FEB-B5F5-12B1EA97C5D6}
 	EndProjectSection
@@ -96,6 +101,14 @@ Global
 		{7FCA8D42-8447-4E3F-B450-DEED052454CA}.Release|x64.Build.0 = Release|x64
 		{7FCA8D42-8447-4E3F-B450-DEED052454CA}.Release|x86.ActiveCfg = Release|Win32
 		{7FCA8D42-8447-4E3F-B450-DEED052454CA}.Release|x86.Build.0 = Release|Win32
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Debug|x64.ActiveCfg = Debug|x64
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Debug|x64.Build.0 = Debug|x64
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Debug|x86.ActiveCfg = Debug|Win32
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Debug|x86.Build.0 = Debug|Win32
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Release|x64.ActiveCfg = Release|x64
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Release|x64.Build.0 = Release|x64
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Release|x86.ActiveCfg = Release|Win32
+		{382CBF83-28E7-4E33-8781-BB4434082167}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

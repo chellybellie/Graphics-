@@ -58,7 +58,7 @@ namespace __internal
 {
 	void t_setUniform(const shader &s, int &loc_io, int &tex_io, float val)
 	{
-		glProgramUniform1i(s.handle, loc_io++, val);
+		glProgramUniform1f(s.handle, loc_io++, val);
 
 	}
 	void t_setUniform(const shader &s, int &loc_io, int &tex_io, int val)

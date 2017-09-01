@@ -22,6 +22,7 @@
     <ProjectGuid>{3F1A4CC5-665B-4765-8E1D-EF8301A5BCC8}</ProjectGuid>
     <RootNamespace>UniTex</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>02 - UniTex</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

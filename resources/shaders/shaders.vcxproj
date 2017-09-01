@@ -114,6 +114,10 @@
     <None Include="..\..\test\05 - MVP\MVPlite.vert" />
     <None Include="Cube.frag" />
     <None Include="Cube.vert" />
+    <None Include="Quad.frag" />
+    <None Include="quad.vert" />
+    <None Include="Standered.frag" />
+    <None Include="Standered.vert" />
     <None Include="test.frag" />
     <None Include="test.vert" />
   </ItemGroup>
