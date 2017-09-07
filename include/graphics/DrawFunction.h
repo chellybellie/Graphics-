@@ -4,6 +4,7 @@
 struct Framebuffer;
 struct shader;
 struct Geometry;
+struct Texture;
 
 enum RenderFlag { Depth = 1};
 
@@ -42,7 +43,7 @@ namespace __internal
 
 template<typename T, typename ...U>
 void setUniforms(const shader &s, int &loc_io, int &tex_io,
-	const T &val, U &&... uniforms)
+	const T &val, U &&... uniforms)  
 {
 	__internal::t_setUniform(s, loc_io, tex_io, val);
 

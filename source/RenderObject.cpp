@@ -143,7 +143,7 @@ Framebuffer makeFrameBuffer(unsigned w, unsigned h, unsigned c, bool hasDEpth, u
 		retval.depthTarget = makeTexture(w, h, 0, 0);
 		glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
 						retval.depthTarget.handle, 0);
-	}
+	} 
 
 	const GLenum attachments[8] =
 	{
