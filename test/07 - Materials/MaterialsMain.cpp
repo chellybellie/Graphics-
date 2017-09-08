@@ -4,6 +4,7 @@
 #include "graphics\DrawFunction.h"
 #include "graphics\Load.h"
 #include "glm\ext.hpp"
+#include "graphics\GameObject.h"
 
 int main()
 {
@@ -29,35 +30,50 @@ int main()
 
 	////////////////////////
 	/// Model Data
-	Geometry  ss_geo = loadGeometry("../../resources/models/soulspear.obj");
-	glm::mat4 ss_model;
+	specgloss sg;
+	sg.geo = loadGeometry("../../resources/models/soulspear.obj");
+	sg.model;
 
-	Texture   ss_normal = loadTexture("../../resources/textures/soulspear_normal.tga");
-	Texture   ss_diffuse = loadTexture("../../resources/textures/soulspear_diffuse.tga");
-	Texture   ss_specular = loadTexture("../../resources/textures/soulspear_specular.tga");
-	float     ss_gloss = 4.0f;
+	sg.normal = loadTexture("../../resources/textures/soulspear_normal.tga");
+	sg.diffuse = loadTexture("../../resources/textures/soulspear_diffuse.tga");
+	sg.specular = loadTexture("../../resources/textures/soulspear_specular.tga");
+    sg.gloss = 4.0f;  
+
+
+	////////////////////////
+	/// Model Data2
+	specgloss sg2;
+	sg2.geo = loadGeometry("../../resources/models/soulspear.obj");
+	sg2.model;
+
+	sg2.normal = loadTexture("../../resources/textures/soulspear_normal.tga");
+	sg2.diffuse = loadTexture("../../resources/textures/soulspear_diffuse.tga");
+	sg2.specular = loadTexture("../../resources/textures/soulspear_specular.tga");
+	sg2.gloss = 4.0f;
 
 	//////////////////////////
 	// Camera Data
-	glm::mat4 cam_view = glm::lookAt(glm::vec3(0, 2, 3),
+	Camera cam;
+	cam.view = glm::lookAt(glm::vec3(0, 2, 3),
 		glm::vec3(0, 2, 0),
 		glm::vec3(0, 1, 0));
-	glm::mat4 cam_proj = glm::perspective(45.f, 800.f / 600.f, .01f, 100.f);
+	cam.proj = glm::perspective(45.f, 800.f / 600.f, .01f, 100.f);
 
 	//////////////////////////
 	// Light
-	glm::vec3 l_dir = glm::normalize(glm::vec3(1, -1, -1));
-	glm::vec4 l_color = glm::vec4(1, .5, .9, 1);
-	float     l_intensity = 1.0;
-	glm::vec4 l_ambient = glm::vec4(.02, .3, .3, 1);
-	int		  l_type = 0;
+	standeredLight sl;
+	sl.dir = glm::normalize(glm::vec3(1, -1, -1));
+	sl.color = glm::vec4(1, .5, .9, 1);
+	sl.intensity = 1.0;
+	sl.ambient = glm::vec4(.02, .3, .3, 1);
+	sl.type = 0;
 
 
 
 	while (context.step())
 	{
 		float time = context.getTime();
-		ss_model = glm::rotate(time / 2, glm::vec3(0, 1, 0));
+		sg.model = glm::rotate(time / 2, glm::vec3(0, 1, 0));
 
 		///////////////////////////////
 		// buffer pass
@@ -66,21 +82,15 @@ int main()
 
 		int loc = 0, slot = 0;
 		setUniforms(standard, loc, slot,
-			cam_proj, cam_view,	// Camera data!
-			ss_model, ss_diffuse, ss_specular, ss_normal, ss_gloss, // model data!
-			l_dir, l_color, l_intensity, l_ambient, l_type		  // light data!
+			cam.proj, cam.view,	// Camera data!
+			sg.model, sg.diffuse, sg.specular, sg.normal, sg.gloss, // model data!
+			sl.dir, sl.color, sl.intensity, sl.ambient, sl.type		  // light data!
 		);
 
-		s0_draw(screen, standard, ss_geo);
+		s0_draw(screen, standard, sg.geo);
 
 		///////////////////////////////
 		// FSQ pass
-
-
-
-
-
-
 
 	}
 	context.term();

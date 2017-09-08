@@ -132,12 +132,14 @@
   <ItemGroup>
     <ClCompile Include="source\Context.cpp" />
     <ClCompile Include="source\DrawFunction.cpp" />
+    <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\load.cpp" />
     <ClCompile Include="source\RenderObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\graphics\Context.h" />
     <ClInclude Include="include\graphics\DrawFunction.h" />
+    <ClInclude Include="include\graphics\GameObject.h" />
     <ClInclude Include="include\graphics\Load.h" />
     <ClInclude Include="include\graphics\RenderObjects.h" />
     <ClInclude Include="include\graphics\Vertex.h" />

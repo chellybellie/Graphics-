@@ -12,6 +12,8 @@ int main()
 
 	//buffers
 	Framebuffer fb_shadow = makeFrameBuffer(2048, 2048, 0, true, 0, 0);
+	Framebuffer fb_shadow1 = makeFrameBuffer(2048, 2048, 0, true, 0, 0);
+	
 	Framebuffer screen = { 0,800,600 };
 
 	// Floor
@@ -44,7 +46,13 @@ int main()
 	// Light
 	glm::vec3 light_dir = glm::normalize(glm::vec3(.8, -1, -1));
 	glm::mat4 light_proj = glm::ortho<float>(-10, 10, -10, 10, -10, 10);
-	glm::mat4 light_view = glm::lookAt(-light_dir, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	glm::mat4 light_view = glm::lookAt(-light_dir, glm::vec3(0, 0, 0), 
+	glm::vec3(0, 1, 0));
+	// light 2
+	glm::vec3 light_dir1 = glm::normalize(glm::vec3(-.8, -1, -1));
+	glm::mat4 light_proj1 = glm::ortho<float>(-10, 10, -10, 10, -10, 10);
+	glm::mat4 light_view1 = glm::lookAt(-light_dir1, glm::vec3(0, 0, 0),
+		glm::vec3(0, 1, 0));
 
 	// Shaders
 	shader shdr_shadow = loadShader("../../resources/shaders/shadow.vert",
@@ -57,39 +65,57 @@ int main()
 	{
 		float time = context.getTime();
 
-		clearFramebuffer(screen);
-		setFlag(RenderFlag::Depth);
-
+		ss_model = glm::rotate(time, glm::vec3( 0,1,0 ));
 		// Shadow Pass
 		setFlag(RenderFlag::Depth);
 		clearFramebuffer(fb_shadow, false, true);
-
+		//draw floor
 		loc = slot = 0;
 		setUniforms(shdr_shadow, loc, slot, light_proj, light_view, floor_model);
-		s0_draw(fb_shadow, shdr_shadow, floor_geo);    //draw floor
-
+		s0_draw(fb_shadow, shdr_shadow, floor_geo);    
+		//draw soulspear
 		loc = slot = 0;
 		setUniforms(shdr_shadow, loc, slot, light_proj, light_view, ss_model);
-		s0_draw(fb_shadow, shdr_shadow, ss_geo);    //draw soulspear
-
+		s0_draw(fb_shadow, shdr_shadow, ss_geo);
+		//draw cube 
 		loc = slot = 0;
 		setUniforms(shdr_shadow, loc, slot, light_proj, light_view, cube_model);
-		s0_draw(fb_shadow, shdr_shadow, cube_geo);    //draw cube
+		s0_draw(fb_shadow, shdr_shadow, cube_geo);
 
-													  //light pass 
+
+		// Shadow Pass2
+		setFlag(RenderFlag::Depth);
+		clearFramebuffer(fb_shadow1, false, true);
+		//draw floor2
+		loc = slot = 0;
+		setUniforms(shdr_shadow, loc, slot, light_proj1, light_view1, floor_model);
+		s0_draw(fb_shadow1, shdr_shadow, floor_geo);
+		//draw soulspear2
+		loc = slot = 0;
+		setUniforms(shdr_shadow, loc, slot, light_proj1, light_view1, ss_model);
+		s0_draw(fb_shadow1, shdr_shadow, ss_geo);
+		//draw cube 2
+		loc = slot = 0;
+		setUniforms(shdr_shadow, loc, slot, light_proj1, light_view1, cube_model);
+		s0_draw(fb_shadow1, shdr_shadow, cube_geo);
+
+	    //light pass 												
 		setFlag(RenderFlag::Depth);
 		clearFramebuffer(screen);
 
 		loc = slot = 0;
-		setUniforms(shdr_direct, loc, slot, cam_proj, cam_view, floor_model, light_proj, light_view, fb_shadow.depthTarget);
+		setUniforms(shdr_direct, loc, slot, cam_proj, cam_view, floor_model, light_proj, light_view, fb_shadow.depthTarget,
+					light_proj1, light_view1, fb_shadow1.depthTarget);
 		s0_draw(screen, shdr_direct, floor_geo);
 
 		loc = slot = 0;
-		setUniforms(shdr_direct, loc, slot, cam_proj, cam_view, ss_model, light_proj, light_view, fb_shadow.depthTarget);
+		setUniforms(shdr_direct, loc, slot, cam_proj, cam_view, ss_model, light_proj, light_view, fb_shadow.depthTarget,
+					light_proj1, light_view1, fb_shadow1.depthTarget);
 		s0_draw(screen, shdr_direct, ss_geo);
 
 		loc = slot = 0;
-		setUniforms(shdr_direct, loc, slot, cam_proj, cam_view, cube_model, light_proj, light_view, fb_shadow.depthTarget);
+		setUniforms(shdr_direct, loc, slot, cam_proj, cam_view, cube_model, light_proj, light_view, fb_shadow.depthTarget,
+					light_proj1, light_view1, fb_shadow1.depthTarget);
 		s0_draw(screen, shdr_direct, cube_geo);
 	}
 	context.term();

@@ -6,7 +6,9 @@ struct shader;
 struct Geometry;
 struct Texture;
 
-enum RenderFlag { Depth = 1};
+enum RenderFlag { Depth    = 1 ,
+				  None     = 0 ,
+				  Additive = 2 };
 
 void setFlag(int flags);
 
